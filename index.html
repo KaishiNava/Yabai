@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yabai Famss - Official Premium Portal</title>
+    <style>
+        /* Modern CSS Reset & Variables */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f0b07 0%, #1a120b 50%, #261a10 100%);
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-dark: #aa7c11;
+            --text-light: #f5edd7;
+            --text-muted: #bfa17a;
+            --card-bg: rgba(26, 18, 11, 0.65);
+            --border-glow: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-light);
+            font-family: 'Cinzel', 'Times New Roman', Georgia, serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Subtle Animated Background Elements */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 900px;
+            padding: 40px 24px;
+            z-index: 1;
+            text-align: center;
+        }
+
+        /* Luxury Hero / Logo Section with Entrance Animation */
+        .hero-section {
+            animation: fadeInDown 1.4s var(--border-glow) both;
+            position: relative;
+            margin-bottom: 45px;
+        }
+
+        .logo-wrapper {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 30px auto;
+        }
+
+        /* Double Animated Outer Glow Rings */
+        .logo-ring-outer {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dashed rgba(212, 175, 55, 0.4);
+            border-radius: 50%;
+            animation: rotateClockwise 25s linear infinite;
+        }
+
+        .logo-ring-inner {
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 2px solid var(--gold-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            animation: pulseGlow 3s ease-in-out infinite alternate;
+        }
+
+        .logo-container {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #1a120b;
+            background-color: #120e0a;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .logo-wrapper:hover .logo-container img {
+            transform: scale(1.08);
+        }
+
+        h1 {
+            font-size: 32pt;
+            color: transparent;
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold-primary), var(--gold-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.7));
+        }
+
+        .subtitle {
+            font-size: 11pt;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 400;
+        }
+
+        /* Luxury Floating Glassmorphism Navigation Menu */
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.2s var(--border-glow) 0.3s both;
+        }
+
+        .nav-button {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 10pt;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, rgba(43, 31, 18, 0.8) 0%, rgba(26, 18, 11, 0.9) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Button Hover Flare effect */
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 243, 203, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .nav-button:hover {
+            color: #0f0b07;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 100%);
+            border-color: var(--gold-light);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6), 0 8px 20px rgba(0,0,0,0.5);
+            transform: translateY(-4px);
+        }
+
+        .nav-button:hover::before {
+            left: 100%;
+        }
+
+        /* Premium Quote Showcase Box */
+        .quote-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-top: 3px solid var(--gold-primary);
+            padding: 45px 35px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(212, 175, 55, 0.1);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 1.4s var(--border-glow) 0.5s both;
+            position: relative;
+        }
+        
+        .quote-text {
+            font-size: 13pt;
+            color: var(--text-light);
+            font-style: italic;
+            white-space: pre-line;
+            line-height: 2;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Luxury Footer */
+        .footer {
+            margin-top: 60px;
+            font-size: 8.5pt;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', sans-serif;
+            animation: fadeIn 2s ease 1s both;
+        }
+
+        /* Keyframe Animations */
+        @keyframes rotateClockwise {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); border-color: rgba(212, 175, 55, 0.6); }
+            100% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.5); border-color: var(--gold-light); }
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        
+        <div class="hero-section">
+            <div class="logo-wrapper">
+                <div class="logo-ring-outer"></div>
+                <div class="logo-ring-inner"></div>
+                <div class="logo-container">
+                    <img src="https://files.catbox.moe/88m97b.png" alt="Yabai Famss Logo">
+                </div>
+            </div>
+            <h1>Yabai Famss</h1>
+            <div class="subtitle">Yabai Famss Circle Properties</div>
+        </div>
+
+        <div class="nav-menu">
+            <a href="properti.html" class="nav-button">Properti Circle</a>
+            <a href="about.html" class="nav-button">About Circle</a>
+            <a href="since.html" class="nav-button">Since Yabai</a>
+            <a href="founder.html" class="nav-button">Founder Yabai</a>
+        </div>
+
+        <div class="quote-box">
+            <div class="quote-text">“Yabai Famss bukan tentang siapa yang paling terkenal,
+bukan juga tentang siapa yang paling lama bertahan.
+
+Kadang circle terbaik lahir dari orang-orang random
+yang dipertemukan oleh kenyamanan sederhana.
+
+Di sini kita ngobrol, bercanda, saling ganggu,
+dan tanpa sadar jadi bagian dari cerita satu sama lain.
+
+Kalau suatu saat nanti member berubah,
+kesibukan datang,
+atau chat mulai sepi,
+setidaknya Yabai pernah jadi tempat
+yang membuat seseorang merasa tidak sendirian.”</div>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 Yabai Famss &bull; Engineered to Excellence
+        </div>
+
+    </div>
+
+</body>
+</html>

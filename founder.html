@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder Profile - Yabai Famss</title>
+    <style>
+        /* Modern CSS Reset & Premium Variables */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f0b07 0%, #1a120b 50%, #261a10 100%);
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-dark: #aa7c11;
+            --text-light: #f5edd7;
+            --text-muted: #bfa17a;
+            --card-bg: rgba(26, 18, 11, 0.65);
+            --border-glow: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 40px 20px;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            z-index: 1;
+            text-align: center;
+        }
+
+        /* Profile Card Showcase */
+        .founder-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-top: 4px solid var(--gold-primary);
+            padding: 50px 35px 40px 35px;
+            border-radius: 16px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(212, 175, 55, 0.1);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 1.4s var(--border-glow) both;
+            position: relative;
+        }
+
+        /* Circular Avatar Frame with Animated Glow Ring */
+        .avatar-wrapper {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 25px auto;
+        }
+
+        .avatar-ring {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border: 2px dashed var(--gold-primary);
+            border-radius: 50%;
+            animation: rotateClockwise 20s linear infinite;
+        }
+
+        .avatar-container {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #1a120b;
+            background: #120e0a;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+            position: relative;
+            /* Memaksa konten internal (video) ikut memotong bulat sempurna */
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
+        }
+
+        .avatar-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Identity Typography */
+        .founder-name {
+            font-family: 'Cinzel', 'Times New Roman', Georgia, serif;
+            font-size: 22pt;
+            color: transparent;
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold-primary), var(--gold-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .founder-title {
+            font-size: 10pt;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: rgba(212, 175, 55, 0.3);
+            margin: 0 auto 25px auto;
+        }
+
+        /* Bio Description Box */
+        .founder-bio {
+            font-size: 11pt;
+            color: var(--text-light);
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Quick Specifications / Details Table-like Layout */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: rgba(15, 11, 7, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            text-align: left;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 8pt;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            margin-bottom: 3px;
+        }
+
+        .meta-value {
+            font-size: 10pt;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* Back Action Button */
+        .action-container {
+            margin-top: 40px;
+            animation: fadeInUp 1.2s var(--border-glow) 0.4s both;
+        }
+
+        .back-button {
+            display: inline-block;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 9pt;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, rgba(43, 31, 18, 0.8) 0%, rgba(26, 18, 11, 0.9) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 243, 203, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .back-button:hover {
+            color: #0f0b07;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 100%);
+            border-color: var(--gold-light);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .back-button:hover::before {
+            left: 100%;
+        }
+
+        /* Keyframe Animations */
+        @keyframes rotateClockwise {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="founder-card">
+            
+            <div class="avatar-wrapper">
+                <div class="avatar-ring"></div>
+                <div class="avatar-container">
+                    <video autoplay loop muted playsinline>
+                        <source src="https://files.catbox.moe/p01luv.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+            <h2 class="founder-name">About Kyy's</h2>
+            <div class="founder-title">Founder of Yabai Famss</div>
+            
+            <div class="divider"></div>
+
+            <div class="founder-bio">
+                Sebagai inisiator di balik layar, sang pendiri mendirikan <span style="color: var(--gold-light); font-weight:600;">Yabai Famss</span> dengan satu visi sederhana: menciptakan sebuah ruang aman di mana setiap orang bisa melepaskan topeng mereka, menjadi diri sendiri, dan menemukan kenyamanan tanpa perlu takut dihakimi. Ia percaya bahwa sebuah ikatan yang tulus tidak diukur dari seberapa lama platform ini berdiri, melainkan dari seberapa hangat pelukan keluarga yang dirasakan oleh setiap anggotanya di dalam perjalanan ini.
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span class="meta-label">Codename / Role</span>
+                    <span class="meta-value">The Founder</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Affiliation</span>
+                    <span class="meta-value">Yabai Famss Core</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Status</span>
+                    <span class="meta-value" style="color: #4cd137;">Active & Overseeing</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Signature Vision</span>
+                    <span class="meta-value">Safe Community For All</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="action-container">
+            <a href="index.html" class="back-button">&larr; Back to Portal</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
